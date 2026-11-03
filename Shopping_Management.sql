@@ -3,8 +3,8 @@ create database Shopping_Management;
 use Shopping_Management;
 
 create table Customers(
-	Customers_Id int primary key auto_increment,
-    Customers_Name Varchar(100) not null,
+	Customer_Id int primary key auto_increment,
+    Customer_Name Varchar(100) not null,
     Email Varchar(100)	unique not null,
     Phone_Number varchar(10) unique not null,
     Age tinyint unsigned check(Age>0),
@@ -39,7 +39,7 @@ create table Orders(
     Tracking_Number varchar(30) not null unique,
     Delivery_Status enum('Not Dispatched', 'In Transit', 'Delivered', 'Returned') default('Not Dispatched'),
     Order_Notes Varchar(1000),
-    foreign key (Customer_Id) References Customers (Customers_Id) on delete cascade on update cascade);
+    foreign key (Customer_Id) References Customers (Customer_Id) on delete cascade on update cascade);
 
 select * from Orders;
 describe Orders;
